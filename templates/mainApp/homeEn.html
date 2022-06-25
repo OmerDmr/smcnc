@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load crispy_forms_tags %}
+<head>
+    <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport">
+    <title>{% block title %}SM CNC-Home{% endblock %}</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}">
+    <link rel="stylesheet" type="text/css" href="../static/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+
+
+
+
+
+
+
+<style>
+
+
+
+  body {
+    position: relative;
+          background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+      background: rgba(0, 0, 0, 0.9);
+  }
+  #home{
+      position: sticky;
+          background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+  }
+
+  #services {
+          background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+  }
+
+
+  #products {
+          background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;}
+
+  #contact {
+          background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;}
+
+
+
+
+  header {
+      background: rgba(0, 0, 0, 0.9); /* Black background with 0.5 opacity */
+      color: white;
+    }
+
+
+
+    .content {
+      background: rgb(0, 0, 0); /* Fallback color */
+      background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+      color: white;
+    }
+
+
+
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  font-size: 17px;
+  border-bottom: 3px solid transparent;
+}
+
+.topnav a:hover {
+  border-bottom: 3px solid white;
+}
+
+.topnav a.active {
+  border-bottom: 3px solid white;
+}
+
+
+.vl {
+  border-left: 1px solid white;
+  height: 30px;
+}
+
+
+    .round3 {
+  border-radius: 30px;
+  padding: 5px;
+}
+
+
+ #demo img
+{
+    box-shadow:1px 1px 5px #000;
+}
+
+#demo img:hover
+{
+    transition:all 0.6s; /* Change Speed */
+    -ms-transform: scale(2, 2); /* IE 9 */
+    -webkit-transform: scale(2, 2); /* Safari */
+    transform: scale(2, 2); /* Change Size */
+    overflow:visible;
+    z-index:1 !important; /* you can change it, but better let this in default */
+}
+
+
+#demo .item-1:hover
+{
+    -ms-transform: translate(100px); /* IE 9 */
+    -webkit-transform: translate(100px); /* Safari */
+    transform: translate(100px); /* Change Offset */
+    z-index:2; /* you can change it, but better let this in default */
+}
+
+#demo .item-2:hover
+{
+    z-index:2; /* you can change it, but better let this in default */
+}
+
+#demo .item-3:hover
+{
+    -ms-transform: translate(-100); /* IE 9 */
+    -webkit-transform: translate(-100px); /* Safari */
+    transform: translate(-100px); /* Change Offset */
+    z-index:2; /* you can change it, but better let this in default */
+}
+
+
+#demo .item-4:hover
+{
+    -ms-transform: translate(100px); /* IE 9 */
+    -webkit-transform: translate(100px); /* Safari */
+    transform: translate(100px); /* Change Offset */
+    z-index:2; /* you can change it, but better let this in default */
+}
+
+#demo .item-5:hover
+{
+    z-index:2; /* you can change it, but better let this in default */
+}
+
+#demo .item-6:hover
+{
+    -ms-transform: translate(-100); /* IE 9 */
+    -webkit-transform: translate(-100px); /* Safari */
+    transform: translate(-100px); /* Change Offset */
+    z-index:2; /* you can change it, but better let this in default */
+}
+
+#demo .item-7:hover
+{
+    z-index:2; /* you can change it, but better let this in default */
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+*, *:before, *:after{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:border-box;
+  box-sizing: border-box;
+}
+
+
+
+
+.cont {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.cont .cont-overlay {
+  background: rgba(0,0,0,0.7);
+  position: absolute;
+  height: 99%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.cont:hover .cont-overlay{
+  opacity: 1;
+}
+
+.cont-image{
+  width: 100%;
+}
+
+.cont-details {
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.cont:hover .cont-details{
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+}
+
+.cont-details h3{
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+.cont-details p{
+  color: #fff;
+  font-size: 0.8em;
+}
+
+.fadeIn-bottom{
+  top: 80%;
+}
+
+
+
+
+
+
+.invalid input:required:invalid {
+  background: #BE4C54;
+}
+
+/* Mark valid inputs during .invalid state */
+.invalid input:required:valid {
+  background: #17D654;
+}
+
+
+
+
+
+
+
+  </style>
+
+
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+    <header  class="navbar navbar-expand  navbar-dark sticky-top flex-column flex-md-row bd-navbar content round3" style="margin-right: 1%; margin-left: 1%">
+
+        <a class="navbar-brand sticky-top " href="{% url 'mainApp:home' %}" >
+            <svg width="210.645" height="36.719" viewBox="0 0 210.645 36.719" xmlns="http://www.w3.org/2000/svg"><g id="svgGroup" stroke-linecap="round" fill-rule="evenodd" font-size="9pt" stroke="#000" stroke-width="0.25mm" fill="#ffffff" style="stroke:#000;stroke-width:0.25mm;fill:#ffffff"><path d="M 51.978 36.011 L 43.945 9.79 L 41.211 36.011 L 35.229 36.011 L 41.211 0.855 L 50.073 0.855 L 58.301 27.686 L 66.626 0.855 L 75.488 0.855 L 80.469 36.011 L 70.605 36.011 L 67.7 10.474 L 60.84 36.011 L 51.978 36.011 Z M 143.115 11.89 L 143.115 36.011 L 138.623 36.011 L 138.623 0.855 L 144.922 0.855 L 166.284 25 L 166.284 0.855 L 170.752 0.855 L 170.752 36.011 L 164.453 36.011 L 143.115 11.89 Z M 0 29.883 L 4.98 24.829 A 11.642 11.642 0 0 0 6.86 27.942 A 14.385 14.385 0 0 0 9.307 30.266 A 13.405 13.405 0 0 0 9.485 30.396 Q 10.913 31.421 12.451 32.007 A 9.508 9.508 0 0 0 13.901 32.437 A 7.154 7.154 0 0 0 15.356 32.593 A 19.9 19.9 0 0 0 17.387 32.493 A 16.734 16.734 0 0 0 18.384 32.361 A 9.78 9.78 0 0 0 19.67 32.065 A 7.254 7.254 0 0 0 20.85 31.592 A 4.578 4.578 0 0 0 21.937 30.829 A 4.012 4.012 0 0 0 22.498 30.164 Q 23.08 29.296 23.095 28 A 5.953 5.953 0 0 0 23.096 27.93 Q 23.096 26.904 22.632 26.172 A 4.435 4.435 0 0 0 21.423 24.915 A 7.369 7.369 0 0 0 20.301 24.268 A 8.793 8.793 0 0 0 19.727 24.024 Q 18.774 23.657 17.786 23.401 Q 16.797 23.145 15.845 22.937 A 27.935 27.935 0 0 1 15.054 22.753 Q 14.693 22.663 14.37 22.571 A 16.539 16.539 0 0 1 14.16 22.51 A 199.632 199.632 0 0 1 11.931 21.853 A 226.848 226.848 0 0 1 11.157 21.619 Q 9.595 21.143 8.081 20.532 A 21.801 21.801 0 0 1 5.212 19.128 Q 3.857 18.335 2.832 17.249 Q 1.807 16.162 1.196 14.734 A 7.441 7.441 0 0 1 0.687 12.887 A 9.852 9.852 0 0 1 0.586 11.45 Q 0.586 9.229 1.135 7.507 A 10.031 10.031 0 0 1 1.992 5.544 A 8.54 8.54 0 0 1 2.686 4.517 Q 3.687 3.247 5.054 2.38 A 12.919 12.919 0 0 1 7.853 1.056 A 14.366 14.366 0 0 1 8.057 0.989 A 18.793 18.793 0 0 1 10.852 0.329 A 21.259 21.259 0 0 1 11.536 0.232 Q 13.379 0 15.308 0 A 24.675 24.675 0 0 1 17.975 0.138 A 18.977 18.977 0 0 1 20.105 0.488 A 18.468 18.468 0 0 1 23.161 1.454 A 16.456 16.456 0 0 1 24.097 1.88 A 17.274 17.274 0 0 1 27.454 4.041 Q 28.979 5.298 30.322 6.836 L 25.342 11.89 Q 24.756 10.132 23.718 8.716 A 12.97 12.97 0 0 0 21.955 6.749 A 11.665 11.665 0 0 0 21.411 6.287 A 10.689 10.689 0 0 0 19.438 5.028 A 9.559 9.559 0 0 0 18.75 4.724 Q 17.358 4.175 16.064 4.175 A 21.376 21.376 0 0 0 14.254 4.248 A 16.793 16.793 0 0 0 12.964 4.407 Q 11.62 4.627 10.64 5.111 A 5.936 5.936 0 0 0 10.535 5.164 A 4.19 4.19 0 0 0 9.456 5.951 A 3.774 3.774 0 0 0 8.96 6.58 A 3.512 3.512 0 0 0 8.506 7.717 Q 8.398 8.212 8.398 8.789 A 4.445 4.445 0 0 0 8.467 9.59 Q 8.558 10.085 8.769 10.489 A 2.759 2.759 0 0 0 8.813 10.571 Q 9.229 11.304 9.924 11.816 A 6.309 6.309 0 0 0 11.176 12.529 A 7.245 7.245 0 0 0 11.499 12.659 A 18.225 18.225 0 0 0 13.318 13.233 Q 14.258 13.477 15.173 13.66 A 23.034 23.034 0 0 1 16.049 13.852 A 17.865 17.865 0 0 1 16.846 14.063 A 708.95 708.95 0 0 1 18.347 14.49 A 819.568 819.568 0 0 1 19.922 14.941 A 33.927 33.927 0 0 1 23.096 16.028 A 23.909 23.909 0 0 1 26.074 17.456 A 11.024 11.024 0 0 1 28.548 19.355 A 10.404 10.404 0 0 1 28.564 19.373 A 8.617 8.617 0 0 1 30.273 21.936 A 7.466 7.466 0 0 1 30.811 23.865 A 9.795 9.795 0 0 1 30.908 25.269 A 15.26 15.26 0 0 1 30.784 27.263 Q 30.646 28.311 30.354 29.214 A 9.388 9.388 0 0 1 30.334 29.273 A 9.93 9.93 0 0 1 29.436 31.258 A 8.505 8.505 0 0 1 28.723 32.275 A 9.449 9.449 0 0 1 26.27 34.399 A 13.711 13.711 0 0 1 23.285 35.734 A 15.173 15.173 0 0 1 23.181 35.767 Q 21.509 36.279 19.641 36.499 A 32.466 32.466 0 0 1 15.845 36.719 A 29.926 29.926 0 0 1 13.112 36.599 A 23.82 23.82 0 0 1 11.157 36.34 A 18.116 18.116 0 0 1 7.354 35.245 A 16.872 16.872 0 0 1 7.117 35.144 Q 5.225 34.326 3.479 33.032 Q 1.733 31.738 0 29.883 Z M 132.959 9.57 L 128.784 11.328 Q 128.296 9.741 127.478 8.423 A 9.201 9.201 0 0 0 125.525 6.165 A 8.643 8.643 0 0 0 122.949 4.7 A 8.754 8.754 0 0 0 120.65 4.209 A 10.504 10.504 0 0 0 119.8 4.175 A 9.771 9.771 0 0 0 117.682 4.397 A 8.319 8.319 0 0 0 116.443 4.773 Q 114.917 5.371 113.708 6.421 A 11.521 11.521 0 0 0 111.597 8.862 Q 110.693 10.254 110.083 11.829 A 17.105 17.105 0 0 0 109.18 15.088 A 19.322 19.322 0 0 0 108.888 18.182 A 17.801 17.801 0 0 0 108.887 18.384 A 22.182 22.182 0 0 0 109.485 23.486 A 14.924 14.924 0 0 0 110.772 26.99 A 13.467 13.467 0 0 0 111.389 28.052 Q 112.695 30.078 114.771 31.336 A 8.453 8.453 0 0 0 117.545 32.385 A 11.679 11.679 0 0 0 119.8 32.593 Q 121.362 32.593 122.754 32.068 A 9.129 9.129 0 0 0 125.281 30.628 A 10.09 10.09 0 0 0 127.271 28.467 Q 128.125 27.222 128.638 25.781 L 132.861 27.466 A 13.105 13.105 0 0 1 130.322 31.531 Q 128.711 33.276 126.648 34.424 Q 124.585 35.571 122.229 36.145 Q 119.873 36.719 117.48 36.719 Q 114.893 36.719 112.512 36.084 Q 110.132 35.449 108.081 34.277 A 17.789 17.789 0 0 1 104.358 31.445 A 17.896 17.896 0 0 1 101.501 27.759 A 18.097 18.097 0 0 1 99.67 23.352 Q 99.023 20.972 99.023 18.384 Q 99.023 15.796 99.67 13.416 Q 100.317 11.035 101.501 8.997 Q 102.686 6.958 104.358 5.298 A 17.789 17.789 0 0 1 108.081 2.466 Q 110.132 1.294 112.512 0.659 A 19.201 19.201 0 0 1 117.48 0.024 A 20.302 20.302 0 0 1 122.351 0.61 A 16.881 16.881 0 0 1 126.782 2.38 A 14.725 14.725 0 0 1 130.432 5.359 A 13.361 13.361 0 0 1 132.717 8.976 A 15.398 15.398 0 0 1 132.959 9.57 Z M 210.645 9.57 L 206.47 11.328 Q 205.981 9.741 205.164 8.423 A 9.201 9.201 0 0 0 203.21 6.165 A 8.643 8.643 0 0 0 200.635 4.7 A 8.754 8.754 0 0 0 198.336 4.209 A 10.504 10.504 0 0 0 197.485 4.175 A 9.771 9.771 0 0 0 195.367 4.397 A 8.319 8.319 0 0 0 194.128 4.773 Q 192.603 5.371 191.394 6.421 A 11.521 11.521 0 0 0 189.282 8.862 Q 188.379 10.254 187.769 11.829 A 17.105 17.105 0 0 0 186.865 15.088 A 19.322 19.322 0 0 0 186.573 18.182 A 17.801 17.801 0 0 0 186.572 18.384 A 22.182 22.182 0 0 0 187.17 23.486 A 14.924 14.924 0 0 0 188.457 26.99 A 13.467 13.467 0 0 0 189.075 28.052 Q 190.381 30.078 192.456 31.336 A 8.453 8.453 0 0 0 195.23 32.385 A 11.679 11.679 0 0 0 197.485 32.593 Q 199.048 32.593 200.439 32.068 A 9.129 9.129 0 0 0 202.966 30.628 A 10.09 10.09 0 0 0 204.956 28.467 Q 205.811 27.222 206.323 25.781 L 210.547 27.466 A 13.105 13.105 0 0 1 208.008 31.531 Q 206.396 33.276 204.333 34.424 Q 202.271 35.571 199.915 36.145 Q 197.559 36.719 195.166 36.719 Q 192.578 36.719 190.198 36.084 Q 187.817 35.449 185.767 34.277 A 17.789 17.789 0 0 1 182.043 31.445 A 17.896 17.896 0 0 1 179.187 27.759 A 18.097 18.097 0 0 1 177.356 23.352 Q 176.709 20.972 176.709 18.384 Q 176.709 15.796 177.356 13.416 Q 178.003 11.035 179.187 8.997 Q 180.371 6.958 182.043 5.298 A 17.789 17.789 0 0 1 185.767 2.466 Q 187.817 1.294 190.198 0.659 A 19.201 19.201 0 0 1 195.166 0.024 A 20.302 20.302 0 0 1 200.037 0.61 A 16.881 16.881 0 0 1 204.468 2.38 A 14.725 14.725 0 0 1 208.118 5.359 A 13.361 13.361 0 0 1 210.402 8.976 A 15.398 15.398 0 0 1 210.645 9.57 Z" vector-effect="non-scaling-stroke"/></g></svg>
+        </a>
+
+        <div class="topnav  bd-navbar-nav">
+    <ul class="navbar-nav bd-navbar-nav  flex-row">
+      <li class="topnav">
+        <a class="nav-link" href="#services"><p style="font-size: 14px" class="text-light"><b>Services</b></p></a>
+      </li>
+      <li class="topnav">
+        <a class="nav-link " href="#products"><p style="font-size: 14px" class="text-light"><b>Products</b></p></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'mainApp:MachineryEn' %}"><p style="font-size: 14px" class="text-light"><b>Machinery</b></p></a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link " href="{% url 'mainApp:AboutUsEn' %}"><p style="font-size: 14px" class="text-light"><b>About Us</b></p></a>
+        </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#contact"><p style="font-size: 14px" class="text-light"><b>Contact Us</b></p></a>
+      </li>
+
+
+    </ul>
+        </div>
+
+
+
+
+  <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
+
+      <a class="navbar-brand" href="#" data-toggle="modal" data-target="#ModalCenter"><p style="font-size: 14px" class="text-light"><b>Get Offer</b></p></a>
+
+
+    <a class="navbar-brand">
+      <div class="vl"></div>
+    </a>
+
+     <a class="navbar-brand" href="{% url 'mainApp:homeDt' %}" >
+        <img  src="/static/img/dt.png" width="30" height="30" class=" img-fluid d-inline-block align-top" alt="">
+    </a>
+
+      <a class="navbar-brand" href="{% url 'mainApp:home' %}" >
+          <img  src="/static/img/en.png" width="30" height="30" class=" img-fluid d-inline-block align-top" alt="">
+      </a>
+
+      <a class="navbar-brand" href="{% url 'mainApp:homeTr' %}">
+        <img  src="/static/img/tr.png" width="30" height="30" class=" img-fluid d-inline-block align-top" alt="">
+      </a>
+
+
+  </ul>
+
+</header>
+
+    <div class="container-fluid modal fade" id="ModalCenter"  role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"  role="document">
+          <div class="modal-content round3" style="background: rgba(0, 0, 0, 0.5);">
+            <div class="modal-body">
+                <div class="modal-header text-center">
+                    <h4><p class="text-light"><b>Write To Us</b></p></h4>
+                    <button type="button" class="close text-light" data-dismiss="modal">
+                        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                    </button>
+                </div>
+                <form id="form1" method="post" action="{%url 'mainApp:emailSend'%}">
+                    {% csrf_token %}
+                    <p class="text-light"><b>E-mail:</b></p>
+                    <input type="text" name="email" class="form-control" required><br>
+                    <p class="text-light"><b>Subject:</b></p>
+                    <input type="text" name="subject" class="form-control" required><br>
+                    <p class="text-light"><b>Message:</b></p><br>
+                    <textarea name="message" style="height: 171px" class="form-control" required></textarea><br>
+                    <input id="Btn_SendMail" type="submit" value="SEND" class=" btn btn-primary "><br>
+                    <div>
+                        <h5>
+                        </h5>
+                    </div>
+                </form>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+<div class="item content" data-aos="fade-down">
+    <a class="topImg">
+      <img style="opacity: 0.9" src="/static/img/topImg.png" class=" img-fluid d-inline-block align-top" alt="">
+  </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+    <div id="home">
+            <div class="container-fluid">
+
+
+                <div class="item" data-aos="fade-up" style="margin-left: 1%; margin-right: 1%">
+                <div class="row">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="content round3" style="width: 100%; height: auto;" src="/static/img/products/a-overlay.png" class=" img-fluid d-inline-block align-top" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="content round3" style=" width: 100%; height: auto;" src="/static/img/products/b-overlay.png" class=" img-fluid d-inline-block align-top" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="content round3" style=" width: 100%; height: auto;" src="/static/img/products/c-overlay.png" class=" img-fluid d-inline-block align-top" alt="">
+                        </div>
+                          <div class="carousel-item">
+                            <img class="content round3" style="width: 100%; height: auto;" src="/static/img/products/e-overlay.jpg" class=" img-fluid d-inline-block align-top" alt="">
+                        </div>
+                          <div class="carousel-item">
+                            <img class="content round3" style="width: 100%; height: auto;" src="/static/img/products/f-overlay.jpg" class=" img-fluid d-inline-block align-top" alt="">
+                        </div>
+
+                      </div>
+
+                    </div>
+                </div>
+                </div>
+
+
+                <div class="item content round3" data-aos="fade-up">
+                    <br><br><br>
+                    <br><br><br>
+                    <h3 class="text-center"> <b> PRODUCE AND PROVIDE CONTINUITY </b></h3>
+                    <br><br><br>
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <div class="item" data-aos="fade-right">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <img class="img-responsive " style="align-content: center" src="/static/img/gear3.png" alt="Lights" width="200" height="200">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-light">
+                                            <h5><b> Wide machine park and advanced technology production.</b></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item" data-aos="fade-left">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <img class="img-responsive " style="align-content: center" src="/static/img/repair3.png" alt="Lights" width="200" height="200">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-light">
+                                            <h5><b> Anticipating the expectations of the customers, solutions with the expected quality with on-site intervention.</b></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="item" data-aos="fade-down">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <img class="img-responsive " style="align-content: center" src="/static/img/satisfy2.png" alt="Lights" width="200" height="200">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="text-light">
+                                            <h5><b> To maximize customer satisfaction by spreading customer focus in all works.</b></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <br><br><br>
+                    <br><br><br>
+                </div>
+
+
+
+            </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div id="services" class="item" data-aos="fade-up" style="padding-right: 1%;padding-left: 1%">
+        <div class="content round3">
+
+
+                    <div class="item" data-aos="fade-up">
+                        <br><br><br>
+                        <br><br><br>
+                        <h3 class="text-center"> <b>SERVICES</b></h3>
+                        <br><br><br>
+                        <div class="container-fluid">
+                            <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="item" data-aos="fade-right">
+                                          <div class="thumbnail">
+                                              <img class="content round3" style="width: 100%; height: auto;" src="/static/img/miling.jpg" class=" img-fluid d-inline-block align-top" alt="">
+                                              <div class="cntnr">
+                                                <div class="content3 round3">
+                                                  <div class="caption">
+                                                    <div class="text-light">
+                                                        <h5 class="text-light" style="text-align: center"><b>CNC-MILING</b></h5>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="item" data-aos="fade-down">
+                                      <div class="thumbnail">
+                                          <img class="content round3" style="width: 100%; height: auto;" src="/static/img/turning.jpg" class=" img-fluid d-inline-block align-top" alt="">
+                                          <div class="cntnr">
+                                              <div class="content3 round3">
+                                                  <div class="caption">
+                                                    <div class="text-light">
+                                                        <h5 class="text-light" style="text-align: center"><b>CNC-TURNING</b></h5>
+                                                    </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="item" data-aos="fade-left">
+                                          <div class="thumbnail">
+                                              <img class="content round3" style="width: 100%; height: auto;" src="/static/img/welded.jpg" class=" img-fluid d-inline-block align-top" alt="">
+                                              <div class="cntnr">
+                                                <div class="content3 round3">
+                                                      <div class="caption">
+                                                        <div class="text-light">
+                                                            <h5 class="text-light" style="text-align: center"><b>WELDED SPARE PARTS MANUFACTURING</b></h5>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br><br>
+                                <br><br>
+                                <br><br>
+                            </div>
+
+
+
+
+                        <h3 class="text-center"> <b>SECTORS SERVED</b></h3>
+                        <br><br>
+                        <br><br>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-md-2" data-aos="flip-left">
+                                <img  style="width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block" src="/static/img/automotive.png" alt="">
+                                <br><br>
+                                <h5 class="text-center"><b>Automotive Industry</b></h5>
+                            </div>
+                            <div class="col-md-2" data-aos="flip-left">
+                                <img style="width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block" src="/static/img/defence-icon-4.png" alt="">
+                                <br><br>
+                                <h5 class="text-center"><b>Defense industry</b></h5>
+                            </div>
+                            <div class="col-md-2" data-aos="flip-left">
+                                <img  style="width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block" src="/static/img/package.png" alt="">
+                                <br><br>
+                                <h5 class="text-center"><b>Packaging and Packaging Machines</b></h5>
+                            </div>
+                            <div class="col-md-2" data-aos="flip-left">
+                                <img  style="width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block" src="/static/img/profileMAch.png" alt="">
+                                <br><br>
+                                <h5 class="text-center"><b>Aluminum Profile Machines </b></h5>
+                            </div>
+                            <div class="col-md-2" data-aos="flip-left">
+                                <img  style="width: 100px; height: 100px; margin-left: auto; margin-right: auto; display: block" src="/static/img/conveyor.png" alt="">
+                                <br><br>
+                                <h5 class="text-center"><b>Conveyor Machines</b></h5>
+                            </div>
+
+                        </div>
+                        <br><br>
+                        <br><br>
+                        <br><br>
+
+                    </div>
+
+        </div>
+    </div>
+
+
+    <div id="products" class="item" data-aos="fade-up" style="padding-right: 1%;padding-left: 1%">
+        <div class="content round3">
+                    <br><br>
+                    <br><br>
+
+                    <div class="item" data-aos="fade-up">
+
+                        <h3 class="text-center"> <b>PRODUCTS</b></h3>
+                        <br><br>
+                        <br><br>
+                        <div id="demo" class="row">
+
+                            <div class="col-md-4 item-1" data-aos="flip-left">
+                                <img  style="width: 700px; height: 350px;" src="/static/img/products/a-overlay.png" class=" img-fluid d-inline-block align-top content round3"  alt="">
+                            </div>
+                            <div class="col-md-4 item-2" data-aos="flip-left">
+                                <img  style="width: 700px; height: 350px;" src="/static/img/products/b-overlay.png" class=" img-fluid d-inline-block align-top content round3" alt="">
+                            </div>
+                            <div class="col-md-4 item-3" data-aos="flip-left">
+                                <img style="width: 700px; height: 350px;" src="/static/img/products/c-overlay.png" class=" img-fluid d-inline-block align-top content round3" alt="">
+                            </div>
+                        </div>
+                        <br><br>
+                        <div id="demo" class="row">
+                            <div class="col-md-4 item-4" data-aos="flip-left">
+                                <img style="width: 700px; height: 350px;" src="/static/img/products/d-overlay.jpg" class=" img-fluid d-inline-block align-top content round3" alt="">
+                            </div>
+                            <div class="col-md-4 item-5" data-aos="flip-left">
+                                <img  style="width: 700px; height: 350px;" src="/static/img/products/e-overlay.jpg" class=" img-fluid d-inline-block align-top content round3" alt="">
+                            </div>
+                            <div class="col-md-4 item-6" data-aos="flip-left">
+                                <img  style="width: 700px; height: 350px;" src="/static/img/products/f-overlay.jpg" class=" img-fluid d-inline-block align-top content round3" alt="">
+                            </div>
+
+                        </div>
+                        <br><br>
+                        <div id="demo" class="row">
+                            <div class="col-md-4 ">
+                            </div>
+                            <div class="col-md-4 item-7" data-aos="flip-left">
+                                <img  style="width: 700px; height: 350px;" src="/static/img/products/g-overlay.jpg" class=" img-fluid d-inline-block align-top content round3" alt="">
+                            </div>
+                            <div class="col-md-4 item-6">
+                            </div>
+
+                        </div>
+
+                    <br><br>
+                        <br><br>
+                        <br><br>
+                        <br><br>
+                    </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="quality" style="padding-right: 1%;padding-left: 1%" >
+    <section id="statistic" class="item content round3" data-aos="fade-up">
+                <div class="auto-container">
+                    <div class="row text-center">
+                        <div class="text-light col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <h3><b>QUALITY AND TRUST</b></h3></div>
+                    </div>
+                    <br><br>
+                    <div class="row text-center">
+                        <div class=" col-md-6">
+                            <div class="counter item" data-aos="fade-right" >
+                                <div class="row">
+                                    <div class="col-md-3">
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <img style="width: 100px; height: 100px;" src="/static/img/product.png" class=" img-fluid d-inline-block align-top" alt="">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <i class="fa fa-star text-light  stats-icon"></i><i class="fa fa-star text-light  stats-icon"></i><i class="fa fa-star text-light stats-icon"></i>
+                                        <p class="text-light"><b>Product</b></p>
+                                        <h2 class="timer count-title"><span class="text-light"><b>100.000+</b></span></h2>
+                                        <div class="stats-line-black"></div>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class=" col-md-6">
+                            <div class="counter item" data-aos="fade-left" >
+                                <div class="row">
+                                    <div class="col-md-3">
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <img style="width: 100px; height: 100px;" src="/static/img/costumer.png" class=" img-fluid d-inline-block align-top" alt="">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <i class="fa fa-star text-light stats-icon"></i><i class="fa fa-star text-light stats-icon"></i><i class="fa fa-star text-light stats-icon"></i>
+                                        <p class="text-light"><b>Customer</b></p>
+                                        <h2 class="timer count-title"><span class="text-light"><b>500+</b></span></h2>
+                                        <div class="stats-line-black"></div>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    </div>
+
+                 <br><br>
+                <br><br>
+        <br><br>
+        <br><br>
+        </section>
+    </div>
+
+
+
+    <footer id="contact" class="item" data-aos="fade-up" style="padding-right: 1%;padding-left: 1%">
+        <div class="content round3">
+            <h3 class="text-light text-center"><b>CONTACT US</b></h3>
+            <br><br>
+        <br><br>
+        <div class="row" >
+            <div class="col-md-4">
+                <div class="item" data-aos="flip-right">
+                    <div class="container">
+                      <div class="cont content round3">
+                          <div class="cont-overlay"></div>
+                          <img class="cont-image" src="/static/img/map.png" width="50" height="250" >
+                          <div class="cont-details fadeIn-bottom">
+                            <h3 class="cont-title"><b>ADDRESS</b></h3>
+                              <h5 class="cont-text"><b>İkitelli OSB Mah. Esenler San. Sit. 8.Blok No:7 Başakşehir / İSTANBUL</b></h5>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="item" data-aos="flip-right">
+                    <div class="container">
+                      <div class="cont content round3">
+                          <div class="cont-overlay"></div>
+                          <img class="cont-image" src="/static/img/telephone.png" width="50" height="250" >
+                          <div class="cont-details fadeIn-bottom">
+                            <h3 class="cont-title"><b>TELEPHONE & E-MAIL</b></h3>
+                            <h5 class="cont-text"><a href="tel:+905326996980"><b>Cell: +905326996980</b></a></h5>
+                              <h5 class="cont-text"><a href="mailto:info@smcncmakine.com"><b>E-mail: info@smcncmakine.com</b></a></h5>
+                              <a href="mailto:myemail@site.com"><img src="/static/img/email.png" style="height: 50px; width: 50px"/></a>
+                              <a href="tel:+905326996980"><img src="/static/img/pngegg.png" style="height: 50px; width: 50px"/></a>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="item" data-aos="flip-right">
+                    <div class="container">
+                      <div class="cont content round3">
+                          <div class="cont-overlay"></div>
+                          <img class="cont-image" src="/static/img/clock.png" width="50" height="250" >
+                          <div class="cont-details fadeIn-bottom">
+                            <h3 class="cont-title"><b>WORKING HOURS</b></h3>
+                              <h5 class="cont-text"><b>Monday-Friday</b></h5>
+                              <h5 class="cont-text"><b>09:00-18:00</b></h5>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+                     <br><br>
+                <br><br>
+
+            <div class="row" style="padding-right: 1%;padding-left: 1%">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d36531.508665743386!2d28.74963063370537!3d41.07347263426859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa58f2d3b7f39%3A0xe4f2808f339e65a6!2s%C4%B0kitelli%20OSB!5e0!3m2!1str!2str!4v1654386496154!5m2!1str!2str" width="2000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <br><br>
+                <br><br>
+            <div class="text-light text-center"><b>SM CNC Copyright © 2022 All Rights Reserved ®</b></div>
+            <br><br>
+                <br><br>
+
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="../static/slick/slick.min.js"></script>
+    <script>AOS.init();</script>
+
+
+
+
+
+
+<script>
+        $(function formclear() {
+            document.getElementById("form1").reset();
+        });
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
